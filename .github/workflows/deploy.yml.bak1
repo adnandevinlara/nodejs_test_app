@@ -8,7 +8,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: self-hosted    # <-- changed this line!
     steps:
       - uses: actions/checkout@v3
 
@@ -20,7 +20,5 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
           script: |
-            whoami
-            hostname
-            pwd
-            ls -la /var/www/html/node_projects/
+            cd /var/www/html/node_projects/docker-testapp
+            ./.scripts/deploy.sh
